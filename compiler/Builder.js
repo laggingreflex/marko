@@ -9,6 +9,7 @@ var FunctionDeclaration = require('./ast/FunctionDeclaration');
 var FunctionCall = require('./ast/FunctionCall');
 var Literal = require('./ast/Literal');
 var Identifier = require('./ast/Identifier');
+var Include = require('./ast/Include');
 var If = require('./ast/If');
 var ElseIf = require('./ast/ElseIf');
 var Else = require('./ast/Else');
@@ -205,6 +206,10 @@ class Builder {
 
     identifier(name) {
         return new Identifier({name});
+    }
+
+    includeStatement(templatePath, dirname) {
+        return new Include({templatePath, dirname});
     }
 
     ifStatement(test, body, elseStatement) {
